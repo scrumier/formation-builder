@@ -6,7 +6,8 @@
 #
 # Bind sur l'IP Tailscale -> joignable depuis le Mac, jamais expose publiquement.
 
-TS   := 127.0.0.1
+-include local.mk
+TS ?= 127.0.0.1
 PORT := 5053
 
 .PHONY: help setup run
