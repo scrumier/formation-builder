@@ -58,5 +58,4 @@ make run      # démarre, affiche l'URL
 
 ## Stack
 
-Python · Flask · Pydantic · pdfplumber. Pas de no-code : tout est scriptable,
-testable et débuggable.
+Python · Flask · Pydantic · pdfplumber. Code scriptable, testable et versionnable.
