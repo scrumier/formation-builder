@@ -1,0 +1,166 @@
+{
+  "meta": {
+    "titre": "Installation d'un disjoncteur PowerPact B en coffret (types 1 et 3R)",
+    "source": "Notice Schneider Electric PHA79813, Rev. 01 (03/2019)",
+    "reference_produit": "PowerPact B — coffrets B125S, B125F, CB125NS, B125RB, CB125NRB",
+    "public": "Électriciens qualifiés / opérateurs habilités",
+    "duree_estimee": "≈ 20 min (estimée)",
+    "genere_le": "2026-06-15",
+    "fichier_source": "procedure-schneider.pdf"
+  },
+  "objectifs": [
+    "Appliquer les consignes de sécurité électrique avant et pendant l'intervention",
+    "Installer le coffret puis le disjoncteur PowerPact B dans le bon ordre",
+    "Raccorder le neutre et la mise à la terre avec les couples de serrage prescrits",
+    "Mettre l'appareil sous tension selon la séquence sécurisée"
+  ],
+  "prerequis": [
+    "Habilitation électrique à jour (personnel qualifié uniquement)",
+    "Équipement de protection personnelle (ÉPP) adapté",
+    "Dispositif de détection de tension à valeur nominale appropriée",
+    "Notice du disjoncteur (EAV91186 ou EAV91182) pour les couples et calibres de fils"
+  ],
+  "securite": {
+    "niveau": "DANGER",
+    "intitule": "Risque d'électrocution, d'explosion ou éclair d'arc",
+    "consignes": [
+      "Porter un ÉPP approprié et observer les méthodes de travail électrique sécuritaire (NFPA 70E, NOM-029-STPS, CSA Z462 ou équivalent local)",
+      "Seul un personnel qualifié doit effectuer l'installation et l'entretien",
+      "Couper toute l'alimentation de l'appareil avant d'y travailler",
+      "Utiliser toujours un détecteur de tension approprié pour confirmer l'absence de tension",
+      "Replacer tous les dispositifs, portes et couvercles avant la remise sous tension"
+    ],
+    "consequence": "Si ces directives ne sont pas respectées, cela entraînera la mort ou des blessures graves."
+  },
+  "phases": [
+    {
+      "id": "coffret",
+      "titre": "Installation du coffret",
+      "etapes": [
+        { "action": "Enlever les vis du couvercle du coffret, puis retirer le couvercle.", "point_cle": null },
+        { "action": "Retirer les débouchures nécessaires à l'installation des serre-câbles ou du conduit (voir figure 1).", "point_cle": null },
+        { "action": "Monter le coffret sur le mur.", "point_cle": null },
+        { "action": "Installer le conduit et les raccords nécessaires.", "point_cle": null },
+        { "action": "Respecter les codes de l'électricité local et national pour les méthodes de câblage.", "point_cle": "Se reporter au schéma de câblage à l'intérieur du coffret pour les accessoires." }
+      ]
+    },
+    {
+      "id": "disjoncteur",
+      "titre": "Installation du disjoncteur",
+      "etapes": [
+        { "action": "Positionner le disjoncteur avec l'extrémité MARCHE (I) vers le haut du boîtier.", "point_cle": "Sens obligatoire : MARCHE (I) en haut." },
+        { "action": "Attacher le disjoncteur à la cuve de montage avec les vis fournies (voir figure 2).", "point_cle": "Serrer au couple selon la notice du disjoncteur (EAV91186 ou EAV91182)." },
+        { "action": "Installer les conducteurs dans les cosses du disjoncteur et serrer les vis de fixation.", "point_cle": "Plaque de remplissage : bipolaire = la laisser ; tripolaire = la retirer et la jeter." }
+      ]
+    },
+    {
+      "id": "terre",
+      "titre": "Cosses de mise à la terre",
+      "etapes": [
+        { "action": "En cas de besoin, installer le kit de cosses de m.à.l.t. PKOGTA2 selon les directives fournies avec le kit.", "point_cle": null }
+      ]
+    },
+    {
+      "id": "neutre",
+      "titre": "Assemblage du neutre",
+      "etapes": [
+        { "action": "Si nécessaire, installer l'assemblage du neutre SN100FA (15–100 A) ou SN225KA (110–125 A).", "point_cle": "Serrer les vis de montage à 5,6–10,2 N·m (50–90 lb-po)." },
+        { "action": "Installer les conducteurs du neutre dans les cosses et serrer selon les directives de l'assemblage.", "point_cle": "Coffrets CB125NS et CB125NRB : neutre SN225KA déjà installé et mis à la masse en usine." }
+      ]
+    },
+    {
+      "id": "masse",
+      "titre": "Vis de mise à la masse",
+      "etapes": [
+        { "action": "Application d'entrée de service : installer la vis verte fournie dans le trou de dégagement du neutre (figure 2).", "point_cle": "Serrer à 5,6–10,2 N·m (50–90 lb-po). CB125NS/CB125NRB : vis posées en usine." },
+        { "action": "Application autre qu'entrée de service : retirer la vis verte des coffrets CB125NS/CB125NRB ; pour les autres, ne pas l'installer.", "point_cle": null }
+      ]
+    },
+    {
+      "id": "couvercle",
+      "titre": "Installation du couvercle",
+      "etapes": [
+        { "action": "Si un disjoncteur tripolaire est installé, retirer la plaque de remplissage (figure 3).", "point_cle": null },
+        { "action": "Placer le couvercle sur le coffret du disjoncteur.", "point_cle": null },
+        { "action": "Installer les vis pour fixer le couvercle (figure 4).", "point_cle": "Serrer à 3,4–5,6 N·m (30–50 lb-po)." }
+      ]
+    },
+    {
+      "id": "tension",
+      "titre": "Mise sous tension",
+      "etapes": [
+        { "action": "Couvercle installé et manette sur ARRÊT (O), mettre sous tension en séquence : commencer à l'extrémité source et continuer vers le dispositif du coffret.", "point_cle": "Toujours démarrer côté source, manette sur ARRÊT (O)." },
+        { "action": "Amener la manette du coffret à la position MARCHE (I).", "point_cle": null }
+      ]
+    }
+  ],
+  "qcm": [
+    {
+      "question": "Avant toute intervention sur le disjoncteur, quelle est la première action de sécurité ?",
+      "options": [
+        "Mettre des gants isolants et commencer",
+        "Couper l'alimentation et confirmer l'absence de tension avec un détecteur approprié",
+        "Prévenir un collègue de la zone de travail"
+      ],
+      "correct": 1,
+      "explication": "On coupe toute l'alimentation puis on vérifie l'absence de tension avec un détecteur à valeur nominale appropriée avant d'intervenir."
+    },
+    {
+      "question": "Dans quel sens positionner le disjoncteur dans le coffret ?",
+      "options": [
+        "Extrémité MARCHE (I) vers le haut",
+        "Extrémité ARRÊT (O) vers le haut",
+        "Le sens n'a pas d'importance"
+      ],
+      "correct": 0,
+      "explication": "Le disjoncteur se positionne avec l'extrémité MARCHE (I) vers le haut du boîtier."
+    },
+    {
+      "question": "Pour un disjoncteur tripolaire, que faire de la plaque de remplissage ?",
+      "options": [
+        "La laisser en place",
+        "La retirer et la jeter",
+        "La déplacer vers le neutre"
+      ],
+      "correct": 1,
+      "explication": "Bipolaire : la plaque reste installée. Tripolaire : on la retire et on la jette."
+    },
+    {
+      "question": "Quel est le couple de serrage des vis du couvercle ?",
+      "options": [
+        "5,6–10,2 N·m (50–90 lb-po)",
+        "3,4–5,6 N·m (30–50 lb-po)",
+        "10–15 N·m (90–130 lb-po)"
+      ],
+      "correct": 1,
+      "explication": "Les vis du couvercle se serrent à 3,4–5,6 N·m (30–50 lb-po). À ne pas confondre avec le neutre (5,6–10,2 N·m)."
+    },
+    {
+      "question": "La vis de mise à la masse verte doit être installée dans quel cas ?",
+      "options": [
+        "Pour toutes les installations sans exception",
+        "Uniquement pour les applications d'entrée de service",
+        "Jamais, elle est purement décorative"
+      ],
+      "correct": 1,
+      "explication": "La vis verte de mise à la masse concerne les applications d'entrée de service. Hors entrée de service, on ne l'installe pas."
+    },
+    {
+      "question": "Lors de la mise sous tension, quel est le bon ordre ?",
+      "options": [
+        "Manette sur MARCHE (I) puis on énergise au hasard",
+        "Manette sur ARRÊT (O), énergiser depuis l'extrémité source, puis manette sur MARCHE (I)",
+        "Énergiser le coffret en premier, source en dernier"
+      ],
+      "correct": 1,
+      "explication": "Couvercle posé, manette sur ARRÊT (O), on énergise en séquence depuis la source vers le dispositif, puis on passe la manette sur MARCHE (I)."
+    }
+  ],
+  "notes_revision": [
+    {
+      "sujet": "Plaque de remplissage — cas du disjoncteur tripolaire",
+      "constat": "Incohérence dans la notice source. La note française de la Figure 3 indique de s'assurer que la plaque de remplissage est « installée » pour un disjoncteur tripolaire, alors que la version anglaise de la même figure (« remove and discard the filler plate ») et l'étape « Installation du couvercle » en français indiquent de la retirer.",
+      "decision": "Version retenue dans ce module : pour un disjoncteur tripolaire, retirer et jeter la plaque de remplissage (cohérent avec l'anglais et avec l'étape d'installation du couvercle). À faire confirmer par un référent technique avant publication."
+    }
+  ]
+}

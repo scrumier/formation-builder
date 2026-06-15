@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ m.meta.titre }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <span class="pill">Module généré automatiquement</span>
+      <h1>{{ m.meta.titre }}</h1>
+      <p class="src">Source : {{ m.meta.source }}
+        {% if m.meta.fichier_source %}
+        <a class="src-btn" href="{{ url_for('source') }}" target="_blank" rel="noopener">📄 Voir la notice d'origine (PDF)</a>
+        {% endif %}
+      </p>
+      <ul class="meta">
+        <li><b>Public</b><span>{{ m.meta.public }}</span></li>
+        <li><b>Durée</b><span>{{ m.meta.duree_estimee }}</span></li>
+        <li><b>Phases</b><span>{{ m.phases|length }}</span></li>
+        <li><b>Étapes</b><span>{{ nb_etapes }}</span></li>
+        <li><b>Généré le</b><span>{{ m.meta.genere_le }}</span></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    {% if m.notes_revision %}
+    <section class="review">
+      <div class="review-head">📝 Note de révision — à valider par le concepteur
+        <span>non destinée à l'apprenant</span></div>
+      {% for n in m.notes_revision %}
+      <div class="review-item">
+        <p class="review-sujet">{{ n.sujet }}</p>
+        <p class="review-constat">{{ n.constat }}</p>
+        <p class="review-decision"><b>Décision retenue :</b> {{ n.decision }}</p>
+      </div>
+      {% endfor %}
+    </section>
+    {% endif %}
+
+    <section class="grid2">
+      <div class="card">
+        <h2>Objectifs pédagogiques</h2>
+        <ul class="check">
+          {% for o in m.objectifs %}<li>{{ o }}</li>{% endfor %}
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Prérequis</h2>
+        <ul class="dot">
+          {% for p in m.prerequis %}<li>{{ p }}</li>{% endfor %}
+        </ul>
+      </div>
+    </section>
+
+    <section class="danger">
+      <div class="danger-head">⚠ {{ m.securite.niveau }} — {{ m.securite.intitule }}</div>
+      <ul>
+        {% for c in m.securite.consignes %}<li>{{ c }}</li>{% endfor %}
+      </ul>
+      <p class="danger-foot">{{ m.securite.consequence }}</p>
+    </section>
+
+    <section class="card">
+      <h2>Déroulé de la procédure</h2>
+      <pre class="mermaid">{{ mermaid }}</pre>
+    </section>
+
+    <section>
+      <h2 class="section-title">Étapes guidées</h2>
+      {% for phase in m.phases %}
+      <div class="phase">
+        <div class="phase-head"><span class="num">{{ loop.index }}</span>{{ phase.titre }}</div>
+        <ol class="steps">
+          {% for e in phase.etapes %}
+          <li>
+            <span class="step-action">{{ e.action }}</span>
+            {% if e.point_cle %}<span class="keynote">★ {{ e.point_cle }}</span>{% endif %}
+          </li>
+          {% endfor %}
+        </ol>
+      </div>
+      {% endfor %}
+    </section>
+
+    <section class="card quiz">
+      <h2>Valider mes acquis</h2>
+      <p class="quiz-sub">{{ m.qcm|length }} questions · répondez puis validez.</p>
+      <form id="quiz">
+        {% for q in m.qcm %}
+        {% set qi = loop.index0 %}
+        <fieldset data-correct="{{ q.correct }}">
+          <legend>{{ qi + 1 }}. {{ q.question }}</legend>
+          {% for opt in q.options %}
+          <label class="opt">
+            <input type="radio" name="q{{ qi }}" value="{{ loop.index0 }}">
+            <span>{{ opt }}</span>
+          </label>
+          {% endfor %}
+          <p class="explain" hidden>{{ q.explication }}</p>
+        </fieldset>
+        {% endfor %}
+        <div class="actions">
+          <button type="button" id="check">Valider</button>
+          <button type="button" id="reset" class="ghost" hidden>Recommencer</button>
+          <span id="score" class="score" hidden></span>
+        </div>
+      </form>
+    </section>
+
+    <footer class="foot">
+      Démo Peakn8 · pipeline PDF → extraction LLM → JSON validé → formation ·
+      contenu fidèle à {{ m.meta.source }}
+    </footer>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({ startOnLoad: true, theme: "base",
+      themeVariables: { primaryColor: "#e8f7ec", primaryBorderColor: "#009530",
+        lineColor: "#9aa0a6", fontFamily: "system-ui" } });
+
+    const form = document.getElementById("quiz");
+    const checkBtn = document.getElementById("check");
+    const resetBtn = document.getElementById("reset");
+    const scoreEl = document.getElementById("score");
+
+    checkBtn.addEventListener("click", () => {
+      const sets = [...form.querySelectorAll("fieldset")];
+      let good = 0;
+      sets.forEach(fs => {
+        const correct = +fs.dataset.correct;
+        const chosen = fs.querySelector("input:checked");
+        fs.querySelectorAll(".opt").forEach(o => o.classList.remove("ok", "ko"));
+        const right = fs.querySelectorAll(".opt")[correct];
+        right.classList.add("ok");
+        if (chosen) {
+          const idx = +chosen.value;
+          if (idx === correct) good++;
+          else chosen.closest(".opt").classList.add("ko");
+        }
+        fs.querySelector(".explain").hidden = false;
+      });
+      scoreEl.textContent = `Score : ${good} / ${sets.length}`;
+      scoreEl.hidden = false;
+      resetBtn.hidden = false;
+      checkBtn.hidden = true;
+    });
+
+    resetBtn.addEventListener("click", () => {
+      form.reset();
+      form.querySelectorAll(".opt").forEach(o => o.classList.remove("ok", "ko"));
+      form.querySelectorAll(".explain").forEach(e => e.hidden = true);
+      scoreEl.hidden = true;
+      resetBtn.hidden = true;
+      checkBtn.hidden = false;
+    });
+  </script>
+</body>
+</html>

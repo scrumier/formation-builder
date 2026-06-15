@@ -1,0 +1,13 @@
+[project]
+name = "formation-builder"
+version = "0.1.0"
+description = "Génère un module de formation structuré à partir d'un PDF de procédure technique"
+requires-python = ">=3.11"
+dependencies = [
+    "flask>=3.1",
+    "pydantic>=2.0",
+    "pdfplumber>=0.11",
+]
+
+[tool.setuptools]
+packages = ["formation"]
