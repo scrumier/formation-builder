@@ -1,166 +1,166 @@
 {
   "meta": {
-    "titre": "Installation d'un disjoncteur PowerPact B en coffret (types 1 et 3R)",
-    "source": "Notice Schneider Electric PHA79813, Rev. 01 (03/2019)",
-    "reference_produit": "PowerPact B — coffrets B125S, B125F, CB125NS, B125RB, CB125NRB",
-    "public": "Électriciens qualifiés / opérateurs habilités",
-    "duree_estimee": "≈ 20 min (estimée)",
+    "titre": "Installing a PowerPact B Circuit Breaker in an Enclosure (Types 1 and 3R)",
+    "source": "Schneider Electric manual PHA79813, Rev. 01 (03/2019)",
+    "reference_produit": "PowerPact B, enclosures B125S, B125F, CB125NS, B125RB, CB125NRB",
+    "public": "Qualified electricians / authorized operators",
+    "duree_estimee": "≈ 20 min (estimated)",
     "genere_le": "2026-06-15",
     "fichier_source": "procedure-schneider.pdf"
   },
   "objectifs": [
-    "Appliquer les consignes de sécurité électrique avant et pendant l'intervention",
-    "Installer le coffret puis le disjoncteur PowerPact B dans le bon ordre",
-    "Raccorder le neutre et la mise à la terre avec les couples de serrage prescrits",
-    "Mettre l'appareil sous tension selon la séquence sécurisée"
+    "Apply electrical safety instructions before and during the intervention",
+    "Install the enclosure then the PowerPact B circuit breaker in the correct order",
+    "Wire the neutral and ground connections with the prescribed torque values",
+    "Energize the device following the safe sequence"
   ],
   "prerequis": [
-    "Habilitation électrique à jour (personnel qualifié uniquement)",
-    "Équipement de protection personnelle (ÉPP) adapté",
-    "Dispositif de détection de tension à valeur nominale appropriée",
-    "Notice du disjoncteur (EAV91186 ou EAV91182) pour les couples et calibres de fils"
+    "Up-to-date electrical qualification (qualified personnel only)",
+    "Appropriate personal protective equipment (PPE)",
+    "Voltage detection device with the appropriate rated value",
+    "Circuit breaker manual (EAV91186 or EAV91182) for torque values and wire gauges"
   ],
   "securite": {
     "niveau": "DANGER",
-    "intitule": "Risque d'électrocution, d'explosion ou éclair d'arc",
+    "intitule": "Risk of electric shock, explosion, or arc flash",
     "consignes": [
-      "Porter un ÉPP approprié et observer les méthodes de travail électrique sécuritaire (NFPA 70E, NOM-029-STPS, CSA Z462 ou équivalent local)",
-      "Seul un personnel qualifié doit effectuer l'installation et l'entretien",
-      "Couper toute l'alimentation de l'appareil avant d'y travailler",
-      "Utiliser toujours un détecteur de tension approprié pour confirmer l'absence de tension",
-      "Replacer tous les dispositifs, portes et couvercles avant la remise sous tension"
+      "Wear appropriate PPE and follow safe electrical work practices (NFPA 70E, NOM-029-STPS, CSA Z462, or local equivalent)",
+      "Only qualified personnel should perform installation and maintenance",
+      "Turn off all power to the equipment before working on it",
+      "Always use a properly rated voltage detector to confirm the absence of voltage",
+      "Replace all devices, doors, and covers before restoring power"
     ],
-    "consequence": "Si ces directives ne sont pas respectées, cela entraînera la mort ou des blessures graves."
+    "consequence": "Failure to follow these instructions will result in death or serious injury."
   },
   "phases": [
     {
       "id": "coffret",
-      "titre": "Installation du coffret",
+      "titre": "Enclosure installation",
       "etapes": [
-        { "action": "Enlever les vis du couvercle du coffret, puis retirer le couvercle.", "point_cle": null },
-        { "action": "Retirer les débouchures nécessaires à l'installation des serre-câbles ou du conduit (voir figure 1).", "point_cle": null },
-        { "action": "Monter le coffret sur le mur.", "point_cle": null },
-        { "action": "Installer le conduit et les raccords nécessaires.", "point_cle": null },
-        { "action": "Respecter les codes de l'électricité local et national pour les méthodes de câblage.", "point_cle": "Se reporter au schéma de câblage à l'intérieur du coffret pour les accessoires." }
+        { "action": "Remove the screws from the enclosure cover, then remove the cover.", "point_cle": null },
+        { "action": "Remove the knockouts needed for the cable glands or conduit (see figure 1).", "point_cle": null },
+        { "action": "Mount the enclosure on the wall.", "point_cle": null },
+        { "action": "Install the conduit and the necessary fittings.", "point_cle": null },
+        { "action": "Follow local and national electrical codes for wiring methods.", "point_cle": "Refer to the wiring diagram inside the enclosure for accessories." }
       ]
     },
     {
       "id": "disjoncteur",
-      "titre": "Installation du disjoncteur",
+      "titre": "Circuit breaker installation",
       "etapes": [
-        { "action": "Positionner le disjoncteur avec l'extrémité MARCHE (I) vers le haut du boîtier.", "point_cle": "Sens obligatoire : MARCHE (I) en haut." },
-        { "action": "Attacher le disjoncteur à la cuve de montage avec les vis fournies (voir figure 2).", "point_cle": "Serrer au couple selon la notice du disjoncteur (EAV91186 ou EAV91182)." },
-        { "action": "Installer les conducteurs dans les cosses du disjoncteur et serrer les vis de fixation.", "point_cle": "Plaque de remplissage : bipolaire = la laisser ; tripolaire = la retirer et la jeter." }
+        { "action": "Position the circuit breaker with the ON (I) end toward the top of the enclosure.", "point_cle": "Mandatory orientation: ON (I) at the top." },
+        { "action": "Attach the circuit breaker to the mounting pan with the supplied screws (see figure 2).", "point_cle": "Tighten to the torque specified in the circuit breaker manual (EAV91186 or EAV91182)." },
+        { "action": "Install the conductors in the circuit breaker lugs and tighten the retaining screws.", "point_cle": "Filler plate: 2-pole = leave in place; 3-pole = remove and discard." }
       ]
     },
     {
       "id": "terre",
-      "titre": "Cosses de mise à la terre",
+      "titre": "Ground lugs",
       "etapes": [
-        { "action": "En cas de besoin, installer le kit de cosses de m.à.l.t. PKOGTA2 selon les directives fournies avec le kit.", "point_cle": null }
+        { "action": "If needed, install the PKOGTA2 ground lug kit following the instructions supplied with the kit.", "point_cle": null }
       ]
     },
     {
       "id": "neutre",
-      "titre": "Assemblage du neutre",
+      "titre": "Neutral assembly",
       "etapes": [
-        { "action": "Si nécessaire, installer l'assemblage du neutre SN100FA (15–100 A) ou SN225KA (110–125 A).", "point_cle": "Serrer les vis de montage à 5,6–10,2 N·m (50–90 lb-po)." },
-        { "action": "Installer les conducteurs du neutre dans les cosses et serrer selon les directives de l'assemblage.", "point_cle": "Coffrets CB125NS et CB125NRB : neutre SN225KA déjà installé et mis à la masse en usine." }
+        { "action": "If needed, install the SN100FA (15–100 A) or SN225KA (110–125 A) neutral assembly.", "point_cle": "Tighten the mounting screws to 5.6–10.2 N·m (50–90 lb-in)." },
+        { "action": "Install the neutral conductors in the lugs and tighten per the assembly instructions.", "point_cle": "CB125NS and CB125NRB enclosures: SN225KA neutral already installed and factory-grounded." }
       ]
     },
     {
       "id": "masse",
-      "titre": "Vis de mise à la masse",
+      "titre": "Grounding screw",
       "etapes": [
-        { "action": "Application d'entrée de service : installer la vis verte fournie dans le trou de dégagement du neutre (figure 2).", "point_cle": "Serrer à 5,6–10,2 N·m (50–90 lb-po). CB125NS/CB125NRB : vis posées en usine." },
-        { "action": "Application autre qu'entrée de service : retirer la vis verte des coffrets CB125NS/CB125NRB ; pour les autres, ne pas l'installer.", "point_cle": null }
+        { "action": "Service entrance application: install the supplied green screw in the neutral bonding hole (figure 2).", "point_cle": "Tighten to 5.6–10.2 N·m (50–90 lb-in). CB125NS/CB125NRB: screw installed at the factory." },
+        { "action": "Non-service-entrance application: remove the green screw from CB125NS/CB125NRB enclosures; for others, do not install it.", "point_cle": null }
       ]
     },
     {
       "id": "couvercle",
-      "titre": "Installation du couvercle",
+      "titre": "Cover installation",
       "etapes": [
-        { "action": "Si un disjoncteur tripolaire est installé, retirer la plaque de remplissage (figure 3).", "point_cle": null },
-        { "action": "Placer le couvercle sur le coffret du disjoncteur.", "point_cle": null },
-        { "action": "Installer les vis pour fixer le couvercle (figure 4).", "point_cle": "Serrer à 3,4–5,6 N·m (30–50 lb-po)." }
+        { "action": "If a 3-pole circuit breaker is installed, remove the filler plate (figure 3).", "point_cle": null },
+        { "action": "Place the cover on the circuit breaker enclosure.", "point_cle": null },
+        { "action": "Install the screws to secure the cover (figure 4).", "point_cle": "Tighten to 3.4–5.6 N·m (30–50 lb-in)." }
       ]
     },
     {
       "id": "tension",
-      "titre": "Mise sous tension",
+      "titre": "Energizing",
       "etapes": [
-        { "action": "Couvercle installé et manette sur ARRÊT (O), mettre sous tension en séquence : commencer à l'extrémité source et continuer vers le dispositif du coffret.", "point_cle": "Toujours démarrer côté source, manette sur ARRÊT (O)." },
-        { "action": "Amener la manette du coffret à la position MARCHE (I).", "point_cle": null }
+        { "action": "With the cover installed and the handle in the OFF (O) position, energize in sequence: start at the source end and continue toward the enclosure device.", "point_cle": "Always start on the source side, handle in the OFF (O) position." },
+        { "action": "Move the enclosure handle to the ON (I) position.", "point_cle": null }
       ]
     }
   ],
   "qcm": [
     {
-      "question": "Avant toute intervention sur le disjoncteur, quelle est la première action de sécurité ?",
+      "question": "Before any work on the circuit breaker, what is the first safety action?",
       "options": [
-        "Mettre des gants isolants et commencer",
-        "Couper l'alimentation et confirmer l'absence de tension avec un détecteur approprié",
-        "Prévenir un collègue de la zone de travail"
+        "Put on insulated gloves and start working",
+        "Turn off the power and confirm the absence of voltage with an appropriately rated detector",
+        "Warn a coworker about the work area"
       ],
       "correct": 1,
-      "explication": "On coupe toute l'alimentation puis on vérifie l'absence de tension avec un détecteur à valeur nominale appropriée avant d'intervenir."
+      "explication": "All power is turned off, then the absence of voltage is verified with an appropriately rated detector before working."
     },
     {
-      "question": "Dans quel sens positionner le disjoncteur dans le coffret ?",
+      "question": "In which orientation should the circuit breaker be positioned in the enclosure?",
       "options": [
-        "Extrémité MARCHE (I) vers le haut",
-        "Extrémité ARRÊT (O) vers le haut",
-        "Le sens n'a pas d'importance"
+        "ON (I) end toward the top",
+        "OFF (O) end toward the top",
+        "Orientation does not matter"
       ],
       "correct": 0,
-      "explication": "Le disjoncteur se positionne avec l'extrémité MARCHE (I) vers le haut du boîtier."
+      "explication": "The circuit breaker is positioned with the ON (I) end toward the top of the enclosure."
     },
     {
-      "question": "Pour un disjoncteur tripolaire, que faire de la plaque de remplissage ?",
+      "question": "For a 3-pole circuit breaker, what should be done with the filler plate?",
       "options": [
-        "La laisser en place",
-        "La retirer et la jeter",
-        "La déplacer vers le neutre"
+        "Leave it in place",
+        "Remove and discard it",
+        "Move it to the neutral"
       ],
       "correct": 1,
-      "explication": "Bipolaire : la plaque reste installée. Tripolaire : on la retire et on la jette."
+      "explication": "2-pole: the plate stays installed. 3-pole: it is removed and discarded."
     },
     {
-      "question": "Quel est le couple de serrage des vis du couvercle ?",
+      "question": "What is the tightening torque for the cover screws?",
       "options": [
-        "5,6–10,2 N·m (50–90 lb-po)",
-        "3,4–5,6 N·m (30–50 lb-po)",
-        "10–15 N·m (90–130 lb-po)"
+        "5.6–10.2 N·m (50–90 lb-in)",
+        "3.4–5.6 N·m (30–50 lb-in)",
+        "10–15 N·m (90–130 lb-in)"
       ],
       "correct": 1,
-      "explication": "Les vis du couvercle se serrent à 3,4–5,6 N·m (30–50 lb-po). À ne pas confondre avec le neutre (5,6–10,2 N·m)."
+      "explication": "The cover screws are tightened to 3.4–5.6 N·m (30–50 lb-in). Do not confuse with the neutral (5.6–10.2 N·m)."
     },
     {
-      "question": "La vis de mise à la masse verte doit être installée dans quel cas ?",
+      "question": "When should the green grounding screw be installed?",
       "options": [
-        "Pour toutes les installations sans exception",
-        "Uniquement pour les applications d'entrée de service",
-        "Jamais, elle est purement décorative"
+        "For all installations, without exception",
+        "Only for service entrance applications",
+        "Never, it is purely decorative"
       ],
       "correct": 1,
-      "explication": "La vis verte de mise à la masse concerne les applications d'entrée de service. Hors entrée de service, on ne l'installe pas."
+      "explication": "The green grounding screw applies to service entrance applications. Outside of service entrance, it is not installed."
     },
     {
-      "question": "Lors de la mise sous tension, quel est le bon ordre ?",
+      "question": "When energizing, what is the correct order?",
       "options": [
-        "Manette sur MARCHE (I) puis on énergise au hasard",
-        "Manette sur ARRÊT (O), énergiser depuis l'extrémité source, puis manette sur MARCHE (I)",
-        "Énergiser le coffret en premier, source en dernier"
+        "Handle in the ON (I) position, then energize at random",
+        "Handle in the OFF (O) position, energize from the source end, then move the handle to ON (I)",
+        "Energize the enclosure first, source last"
       ],
       "correct": 1,
-      "explication": "Couvercle posé, manette sur ARRÊT (O), on énergise en séquence depuis la source vers le dispositif, puis on passe la manette sur MARCHE (I)."
+      "explication": "With the cover installed and the handle in the OFF (O) position, energize in sequence from the source toward the device, then move the handle to ON (I)."
     }
   ],
   "notes_revision": [
     {
-      "sujet": "Plaque de remplissage — cas du disjoncteur tripolaire",
-      "constat": "Incohérence dans la notice source. La note française de la Figure 3 indique de s'assurer que la plaque de remplissage est « installée » pour un disjoncteur tripolaire, alors que la version anglaise de la même figure (« remove and discard the filler plate ») et l'étape « Installation du couvercle » en français indiquent de la retirer.",
-      "decision": "Version retenue dans ce module : pour un disjoncteur tripolaire, retirer et jeter la plaque de remplissage (cohérent avec l'anglais et avec l'étape d'installation du couvercle). À faire confirmer par un référent technique avant publication."
+      "sujet": "Filler plate: case of the 3-pole circuit breaker",
+      "constat": "Inconsistency in the source manual. The French caption for Figure 3 states the filler plate should be \"installed\" for a 3-pole circuit breaker, while the English version of the same figure (\"remove and discard the filler plate\") and the French \"cover installation\" step both say to remove it.",
+      "decision": "Version used in this module: for a 3-pole circuit breaker, remove and discard the filler plate (consistent with the English version and with the cover installation step). To be confirmed by a technical reviewer before publication."
     }
   ]
 }

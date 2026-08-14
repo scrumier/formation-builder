@@ -76,7 +76,7 @@ ul.check li:last-child, ul.dot li:last-child { border-bottom: 0; }
 ul.check li::before { content: "✓"; position: absolute; left: 0; top: 6px; color: var(--green-d); font-weight: 700; }
 ul.dot li::before { content: "•"; position: absolute; left: 6px; top: 6px; color: var(--muted); font-weight: 700; }
 
-/* Note de révision (concepteur, pas apprenant) */
+/* Review note (designer, not learner) */
 .review {
   background: #eef4ff;
   border: 1px dashed #6b8fd6;

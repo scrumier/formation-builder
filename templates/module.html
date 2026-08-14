@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,19 +9,19 @@
 <body>
   <header class="topbar">
     <div class="wrap">
-      <span class="pill">Module généré automatiquement</span>
+      <span class="pill">Automatically generated module</span>
       <h1>{{ m.meta.titre }}</h1>
-      <p class="src">Source : {{ m.meta.source }}
+      <p class="src">Source: {{ m.meta.source }}
         {% if m.meta.fichier_source %}
-        <a class="src-btn" href="{{ url_for('source') }}" target="_blank" rel="noopener">📄 Voir la notice d'origine (PDF)</a>
+        <a class="src-btn" href="{{ url_for('source') }}" target="_blank" rel="noopener">📄 View the original manual (PDF)</a>
         {% endif %}
       </p>
       <ul class="meta">
-        <li><b>Public</b><span>{{ m.meta.public }}</span></li>
-        <li><b>Durée</b><span>{{ m.meta.duree_estimee }}</span></li>
+        <li><b>Audience</b><span>{{ m.meta.public }}</span></li>
+        <li><b>Duration</b><span>{{ m.meta.duree_estimee }}</span></li>
         <li><b>Phases</b><span>{{ m.phases|length }}</span></li>
-        <li><b>Étapes</b><span>{{ nb_etapes }}</span></li>
-        <li><b>Généré le</b><span>{{ m.meta.genere_le }}</span></li>
+        <li><b>Steps</b><span>{{ nb_etapes }}</span></li>
+        <li><b>Generated on</b><span>{{ m.meta.genere_le }}</span></li>
       </ul>
     </div>
   </header>
@@ -30,13 +30,13 @@
 
     {% if m.notes_revision %}
     <section class="review">
-      <div class="review-head">📝 Note de révision — à valider par le concepteur
-        <span>non destinée à l'apprenant</span></div>
+      <div class="review-head">📝 Review note: to be validated by the designer
+        <span>not intended for the learner</span></div>
       {% for n in m.notes_revision %}
       <div class="review-item">
         <p class="review-sujet">{{ n.sujet }}</p>
         <p class="review-constat">{{ n.constat }}</p>
-        <p class="review-decision"><b>Décision retenue :</b> {{ n.decision }}</p>
+        <p class="review-decision"><b>Decision:</b> {{ n.decision }}</p>
       </div>
       {% endfor %}
     </section>
@@ -44,13 +44,13 @@
 
     <section class="grid2">
       <div class="card">
-        <h2>Objectifs pédagogiques</h2>
+        <h2>Learning objectives</h2>
         <ul class="check">
           {% for o in m.objectifs %}<li>{{ o }}</li>{% endfor %}
         </ul>
       </div>
       <div class="card">
-        <h2>Prérequis</h2>
+        <h2>Prerequisites</h2>
         <ul class="dot">
           {% for p in m.prerequis %}<li>{{ p }}</li>{% endfor %}
         </ul>
@@ -58,7 +58,7 @@
     </section>
 
     <section class="danger">
-      <div class="danger-head">⚠ {{ m.securite.niveau }} — {{ m.securite.intitule }}</div>
+      <div class="danger-head">⚠ {{ m.securite.niveau }}: {{ m.securite.intitule }}</div>
       <ul>
         {% for c in m.securite.consignes %}<li>{{ c }}</li>{% endfor %}
       </ul>
@@ -66,12 +66,12 @@
     </section>
 
     <section class="card">
-      <h2>Déroulé de la procédure</h2>
+      <h2>Procedure flow</h2>
       <pre class="mermaid">{{ mermaid }}</pre>
     </section>
 
     <section>
-      <h2 class="section-title">Étapes guidées</h2>
+      <h2 class="section-title">Guided steps</h2>
       {% for phase in m.phases %}
       <div class="phase">
         <div class="phase-head"><span class="num">{{ loop.index }}</span>{{ phase.titre }}</div>
@@ -88,8 +88,8 @@
     </section>
 
     <section class="card quiz">
-      <h2>Valider mes acquis</h2>
-      <p class="quiz-sub">{{ m.qcm|length }} questions · répondez puis validez.</p>
+      <h2>Check your knowledge</h2>
+      <p class="quiz-sub">{{ m.qcm|length }} questions · answer, then check.</p>
       <form id="quiz">
         {% for q in m.qcm %}
         {% set qi = loop.index0 %}
@@ -105,16 +105,16 @@
         </fieldset>
         {% endfor %}
         <div class="actions">
-          <button type="button" id="check">Valider</button>
-          <button type="button" id="reset" class="ghost" hidden>Recommencer</button>
+          <button type="button" id="check">Check</button>
+          <button type="button" id="reset" class="ghost" hidden>Restart</button>
           <span id="score" class="score" hidden></span>
         </div>
       </form>
     </section>
 
     <footer class="foot">
-      Démo Peakn8 · pipeline PDF → extraction LLM → JSON validé → formation ·
-      contenu fidèle à {{ m.meta.source }}
+      Peakn8 demo · pipeline PDF → LLM extraction → validated JSON → training ·
+      content faithful to {{ m.meta.source }}
     </footer>
   </main>
 
@@ -145,7 +145,7 @@
         }
         fs.querySelector(".explain").hidden = false;
       });
-      scoreEl.textContent = `Score : ${good} / ${sets.length}`;
+      scoreEl.textContent = `Score: ${good} / ${sets.length}`;
       scoreEl.hidden = false;
       resetBtn.hidden = false;
       checkBtn.hidden = true;

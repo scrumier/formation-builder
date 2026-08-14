@@ -1,9 +1,9 @@
-"""Serveur de la démo Formation Builder.
+"""Server for the Formation Builder demo.
 
-Charge le module pré-généré, le valide contre le schéma, construit le
-logigramme des phases, puis sert la page de formation.
+Loads the pre-generated module, validates it against the schema, builds
+the phase flowchart, then serves the training page.
 
-    make run        # via Makefile (bind Tailscale + affiche l'URL)
+    make run        # via Makefile (binds Tailscale + prints the URL)
     FLASK_HOST=... FLASK_PORT=... uv run python app.py
 """
 
@@ -23,8 +23,8 @@ MODULE = load_module(BASE / "module.json")
 
 
 def logigramme(module) -> str:
-    """Définition Mermaid du flux des phases (déterministe, jamais halluciné)."""
-    noeuds = ["    secu([Sécurité préalable])"]
+    """Mermaid definition of the phase flow (deterministic, never hallucinated)."""
+    noeuds = ["    secu([Preliminary safety])"]
     liens = []
     precedent = "secu"
     for phase in module.phases:
@@ -46,7 +46,7 @@ def index():
 
 @app.route("/source")
 def source():
-    """Sert la notice PDF d'origine (consultation des sources)."""
+    """Serves the original source PDF manual (for consulting the source)."""
     fichier = MODULE.meta.fichier_source
     if not fichier:
         abort(404)

@@ -1,18 +1,18 @@
-"""Pipeline d'extraction : PDF de procédure -> module de formation structuré.
+"""Extraction pipeline: procedure PDF -> structured training module.
 
-Architecture (volontairement simple et scalable) :
+Architecture (deliberately simple and scalable):
 
-    PDF  ->  texte (pdfplumber)  ->  LLM (prompt + schéma)  ->  Module validé
+    PDF  ->  text (pdfplumber)  ->  LLM (prompt + schema)  ->  validated Module
 
-Pour cette démo, l'étape LLM a été exécutée par Claude (l'assistant qui a
-construit le projet), et le résultat est figé dans `module.json`. La fonction
-`call_llm` ci-dessous est le seul point à brancher pour passer en automatique :
-n'importe quel backend (Anthropic, OpenRouter, modèle local) renvoyant du JSON
-conforme à `formation.schema.Module` fait l'affaire.
+For this demo, the LLM step was run by Claude (the assistant that built the
+project), and the result is frozen in `module.json`. The `call_llm` function
+below is the only point to wire up to go live: any backend (Anthropic,
+OpenRouter, local model) returning JSON conforming to `formation.schema.Module`
+will do.
 
-Pour des documents très longs (catalogue de centaines de pages), on remplace
-l'appel unique par un map-reduce : segmentation par section -> un appel par
-section en parallèle -> un appel de synthèse + génération du QCM global.
+For very long documents (a catalog of hundreds of pages), the single call is
+replaced by a map-reduce: split by section -> one call per section in
+parallel -> a synthesis call + global quiz generation.
 """
 
 from __future__ import annotations
@@ -23,24 +23,25 @@ from pathlib import Path
 from .schema import Module
 
 PROMPT_SYSTEME = """\
-Tu es ingénieur pédagogique pour la formation technique en environnement
-industriel électrique. À partir d'une procédure technique brute, tu produis un
-module de formation structuré, fidèle à la source, sans rien inventer.
+You are an instructional designer for technical training in an industrial
+electrical environment. From a raw technical procedure, you produce a
+structured training module, faithful to the source, without inventing
+anything.
 
-Règles :
-- Reformuler en français clair, orienté apprenant, sans perdre les valeurs
-  chiffrées (couples de serrage, calibres, références produit).
-- Isoler les consignes de sécurité en bloc dédié.
-- Découper la procédure en phases ordonnées, chaque étape = une action + un
-  point clé optionnel (sécurité, valeur critique, piège fréquent).
-- Générer un QCM de validation : chaque question teste un point réellement
-  présent dans la procédure (séquence, couple, règle conditionnelle...).
-- Répondre UNIQUEMENT par un JSON conforme au schéma fourni.
+Rules:
+- Rephrase in clear, learner-oriented English, without losing the numeric
+  values (torque specs, ratings, product references).
+- Isolate the safety instructions in a dedicated block.
+- Break the procedure down into ordered phases, each step = one action + an
+  optional key point (safety, critical value, common pitfall).
+- Generate a validation quiz: each question tests a point actually present
+  in the procedure (sequence, torque, conditional rule...).
+- Respond ONLY with JSON conforming to the schema provided.
 """
 
 
 def pdf_to_text(pdf_path: str | Path) -> str:
-    """Extrait le texte brut d'un PDF de procédure."""
+    """Extracts the raw text from a procedure PDF."""
     import pdfplumber
 
     pages: list[str] = []
@@ -50,26 +51,26 @@ def pdf_to_text(pdf_path: str | Path) -> str:
     return "\n\n".join(pages)
 
 
-def call_llm(system: str, user: str) -> str:  # pragma: no cover - point d'intégration
-    """Point d'intégration LLM.
+def call_llm(system: str, user: str) -> str:  # pragma: no cover - integration point
+    """LLM integration point.
 
-    Non câblé dans la démo (zéro token consommé) : le module est déjà dans
-    `module.json`. Brancher ici le backend de son choix pour l'automatiser.
+    Not wired up in the demo (zero tokens consumed): the module is already in
+    `module.json`. Wire up the backend of your choice here to automate it.
     """
     raise NotImplementedError(
-        "Backend LLM non câblé pour la démo. Le module pré-généré est dans "
-        "module.json. Brancher Anthropic/OpenRouter ici pour passer en live."
+        "LLM backend not wired up for the demo. The pre-generated module is in "
+        "module.json. Wire up Anthropic/OpenRouter here to go live."
     )
 
 
 def build_module(pdf_path: str | Path) -> Module:
-    """Pipeline complet PDF -> Module validé (mode live)."""
+    """Full pipeline PDF -> validated Module (live mode)."""
     texte = pdf_to_text(pdf_path)
     brut = call_llm(PROMPT_SYSTEME, texte)
     return Module.model_validate_json(brut)
 
 
 def load_module(json_path: str | Path) -> Module:
-    """Charge et valide un module déjà généré (mode démo)."""
+    """Loads and validates an already-generated module (demo mode)."""
     data = json.loads(Path(json_path).read_text(encoding="utf-8"))
     return Module.model_validate(data)

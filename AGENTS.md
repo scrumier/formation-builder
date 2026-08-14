@@ -22,8 +22,9 @@ no push.
   looking for one, there is no `.env.example` here.
 - Port 5053 may be taken. `PORT=5063 make run` changes it.
 - A scanned PDF yields no text, it needs OCR first.
-- The interface and the extraction prompt are in French on purpose, the source
-  manual being French. Do not translate them as part of a setup request.
+- The JSON keys of the module schema are French, and shared by
+  `formation/schema.py`, `module.json` and the templates. Renaming one without
+  the other two breaks the rendering with no explicit error.
 
 ## Shape of the repo
 

@@ -67,9 +67,11 @@ data, no client data.
 
 ## A note on language
 
-The documentation, the interface and the extraction prompt are written in French,
-because the source manual and the target audience are French. The pipeline itself
-has nothing language-specific in it.
+Everything is in English except two things. The source manual in `data/` is a
+real French document and is served as it is. The JSON keys of the module schema
+are still French, because they are shared by `formation/schema.py`, `module.json`
+and the templates: renaming them buys nothing and breaks the rendering in three
+places at once.
 
 ## Stack
 
