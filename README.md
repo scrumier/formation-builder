@@ -1,61 +1,76 @@
-# Formation Builder
+# formation-builder
 
-Transforme un **PDF de procédure technique** en **module de formation structuré**
-(objectifs, étapes guidées, points de sécurité, logigramme, QCM de validation),
-rendu dans une page web claire.
+Turns a **technical procedure PDF** into a **structured training module**
+(objectives, guided steps, safety points, flowchart, validation quiz), rendered
+as a plain web page.
 
-Cas d'usage : automatiser la production de contenu de formation à partir de la
-documentation technique existante, en gardant un humain dans la boucle pour
-valider les zones ambiguës.
+Use case: producing training content from the technical documentation a company
+already has, with a human kept in the loop to settle the ambiguous parts.
 
-## Ce que ça fait aujourd'hui
+## Run it
 
-- **Extraction structurée** d'un PDF de procédure vers un module pédagogique
-  (objectifs, prérequis, consignes de sécurité, phases et étapes, QCM).
-- **Validation par schéma** (Pydantic) : le rendu ne fait jamais confiance à une
-  sortie LLM brute ; une sortie non conforme casse proprement.
-- **Logigramme des phases** généré de façon déterministe (Mermaid), jamais halluciné.
-- **QCM interactif** de validation des acquis (score + explications).
-- **Notes de révision** : si la source est ambiguë ou incohérente (ex. ici une
-  divergence FR/EN de la notice sur la plaque de remplissage), le pipeline ne
-  tranche pas en silence, il **remonte le doute au concepteur** pour validation.
-- **Traçabilité** : bouton vers la **notice d'origine** (le PDF source est servi tel quel).
+The short way, with any coding agent:
+
+```bash
+claude          # or codex, or whatever you run
+> set this up for me
+```
+
+It reads `AGENTS.md`, installs what is missing, and hands back the command that
+starts it.
+
+The manual way:
+
+```bash
+make setup    # once: venv and dependencies (uv)
+make run      # starts, prints the URL
+```
+
+## What it does today
+
+- **Structured extraction** from a procedure PDF into a teaching module
+  (objectives, prerequisites, safety instructions, phases and steps, quiz).
+- **Schema validation** (Pydantic): the renderer never trusts raw LLM output, a
+  non-conforming answer fails cleanly instead of reaching the page.
+- **Phase flowchart** generated deterministically (Mermaid), never hallucinated.
+- **Interactive quiz** with a score and explanations.
+- **Review notes**: when the source is ambiguous or inconsistent (here, a French
+  and English divergence in the manual about the filling plate), the pipeline
+  does not decide silently. It **raises the doubt to the author** for a call.
+- **Traceability**: a button back to the original manual, served as it is.
 
 ## Pipeline
 
 ```
-PDF procédure  ->  texte (pdfplumber)  ->  LLM (prompt + schéma)  ->  JSON validé  ->  page HTML
+procedure PDF  ->  text (pdfplumber)  ->  LLM (prompt + schema)  ->  validated JSON  ->  HTML page
 ```
 
-L'étape LLM est isolée dans `formation/extract.py` (prompt d'ingénieur
-pédagogique). Pour la démo, elle a été exécutée une fois et le résultat figé dans
-`module.json` (zéro token consommé) ; brancher un backend dans `call_llm` suffit
-pour l'automatiser.
+The LLM step is isolated in `formation/extract.py`. For the demo it was run once
+and the result frozen into `module.json`, so the demo costs zero tokens. Wiring a
+backend into `call_llm` is enough to automate it.
 
-## Prochaines améliorations
+## What is missing
 
-- **OCR documentaire (Mistral Document AI)** : aujourd'hui seul le **texte** est
-  extrait (`pdfplumber`), les **schémas sont perdus**. Un OCR type Mistral
-  permettrait de récupérer les figures, les réinsérer à côté de la bonne étape, et
-  coupler à un modèle vision pour les comprendre/légender. Sur une notice
-  technique, le visuel porte une grande partie de l'information.
-- **Documents longs** : remplacer l'appel LLM unique par un map-reduce
-  (segmentation par section -> un appel par section -> synthèse + QCM global).
-- **Export** : génération PDF/SCORM du module pour intégration LMS.
+- **Document OCR.** Only the **text** is extracted today (`pdfplumber`), so the
+  **diagrams are lost**. An OCR pass would recover the figures, place them next
+  to the right step, and pair with a vision model to caption them. On a technical
+  manual, a large part of the information is in the drawings.
+- **Long documents.** The single LLM call should become a map-reduce: split by
+  section, one call per section, then a global synthesis and quiz.
+- **Export.** PDF or SCORM output, for integration into an LMS.
 
-## Données & conformité
+## Data and compliance
 
-Démo alimentée **uniquement** par un document **public** : notice Schneider
-Electric **PHA79813** (installation disjoncteur PowerPact B), dans `data/`.
-Aucune donnée personnelle, aucune donnée client. RGPD-safe par construction.
+The demo runs on a **public document only**: Schneider Electric manual
+**PHA79813** (PowerPact B circuit breaker installation), in `data/`. No personal
+data, no client data.
 
-## Lancer
+## A note on language
 
-```
-make setup    # une fois : venv + dépendances (uv)
-make run      # démarre, affiche l'URL
-```
+The documentation, the interface and the extraction prompt are written in French,
+because the source manual and the target audience are French. The pipeline itself
+has nothing language-specific in it.
 
 ## Stack
 
-Python · Flask · Pydantic · pdfplumber. Code scriptable, testable et versionnable.
+Python, Flask, Pydantic, pdfplumber. Scriptable, testable, versionable.

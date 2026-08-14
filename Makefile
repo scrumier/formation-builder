@@ -1,10 +1,10 @@
-# Formation Builder — launcher autonome du projet.
+# formation-builder
 #
-#   make setup   <- une fois : cree le venv + installe les deps (uv)
-#   make run     <- demarre le serveur, affiche l'URL (Ctrl+C pour arreter)
-#   make help    <- rappel des commandes + URL
+#   make setup   once: creates the venv and installs dependencies (uv)
+#   make run     starts the server and prints the URL (Ctrl+C to stop)
+#   make help    the commands and the URL
 #
-# Bind sur l'IP Tailscale -> joignable depuis le Mac, jamais expose publiquement.
+# Listens locally by default. Override HOST to expose it on the network.
 
 -include local.mk
 TS ?= 127.0.0.1
@@ -14,18 +14,18 @@ PORT := 5053
 
 help:
 	@echo ""
-	@echo "  Formation Builder"
-	@echo "    make setup   installe les dependances (a faire une fois)"
-	@echo "    make run     demarre la demo   ->  http://$(TS):$(PORT)"
+	@echo "  formation-builder"
+	@echo "    make setup   install dependencies (once)"
+	@echo "    make run     start the demo  ->  http://$(TS):$(PORT)"
 	@echo ""
 
 setup:
-	@echo "==> Creation du venv + install des deps (uv)..."
+	@echo "==> Creating the venv and installing dependencies (uv)..."
 	@uv sync --quiet
-	@echo "==> Pret. Lancer :  make run"
+	@echo "==> Ready. Run:  make run"
 
 run:
 	@echo ""
-	@echo "==> Ouvre sur ton Mac :  http://$(TS):$(PORT)      (Ctrl+C pour arreter)"
+	@echo "==> Open:  http://$(TS):$(PORT)      (Ctrl+C to stop)"
 	@echo ""
 	@FLASK_HOST=$(TS) FLASK_PORT=$(PORT) uv run python app.py
