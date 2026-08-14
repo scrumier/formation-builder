@@ -67,11 +67,8 @@ data, no client data.
 
 ## A note on language
 
-Everything is in English except two things. The source manual in `data/` is a
-real French document and is served as it is. The JSON keys of the module schema
-are still French, because they are shared by `formation/schema.py`, `module.json`
-and the templates: renaming them buys nothing and breaks the rendering in three
-places at once.
+Everything is in English. The source manual in `data/` is a real French document
+and is served as it is.
 
 ## Stack
 

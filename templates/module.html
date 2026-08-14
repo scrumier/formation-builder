@@ -3,39 +3,39 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ m.meta.titre }}</title>
+  <title>{{ m.meta.title }}</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
   <header class="topbar">
     <div class="wrap">
       <span class="pill">Automatically generated module</span>
-      <h1>{{ m.meta.titre }}</h1>
+      <h1>{{ m.meta.title }}</h1>
       <p class="src">Source: {{ m.meta.source }}
-        {% if m.meta.fichier_source %}
+        {% if m.meta.source_file %}
         <a class="src-btn" href="{{ url_for('source') }}" target="_blank" rel="noopener">📄 View the original manual (PDF)</a>
         {% endif %}
       </p>
       <ul class="meta">
         <li><b>Audience</b><span>{{ m.meta.public }}</span></li>
-        <li><b>Duration</b><span>{{ m.meta.duree_estimee }}</span></li>
+        <li><b>Duration</b><span>{{ m.meta.estimated_duration }}</span></li>
         <li><b>Phases</b><span>{{ m.phases|length }}</span></li>
-        <li><b>Steps</b><span>{{ nb_etapes }}</span></li>
-        <li><b>Generated on</b><span>{{ m.meta.genere_le }}</span></li>
+        <li><b>Steps</b><span>{{ num_steps }}</span></li>
+        <li><b>Generated on</b><span>{{ m.meta.generated_at }}</span></li>
       </ul>
     </div>
   </header>
 
   <main class="wrap">
 
-    {% if m.notes_revision %}
+    {% if m.review_notes %}
     <section class="review">
       <div class="review-head">📝 Review note: to be validated by the designer
         <span>not intended for the learner</span></div>
-      {% for n in m.notes_revision %}
+      {% for n in m.review_notes %}
       <div class="review-item">
-        <p class="review-sujet">{{ n.sujet }}</p>
-        <p class="review-constat">{{ n.constat }}</p>
+        <p class="review-subject">{{ n.subject }}</p>
+        <p class="review-finding">{{ n.finding }}</p>
         <p class="review-decision"><b>Decision:</b> {{ n.decision }}</p>
       </div>
       {% endfor %}
@@ -46,23 +46,23 @@
       <div class="card">
         <h2>Learning objectives</h2>
         <ul class="check">
-          {% for o in m.objectifs %}<li>{{ o }}</li>{% endfor %}
+          {% for o in m.objectives %}<li>{{ o }}</li>{% endfor %}
         </ul>
       </div>
       <div class="card">
         <h2>Prerequisites</h2>
         <ul class="dot">
-          {% for p in m.prerequis %}<li>{{ p }}</li>{% endfor %}
+          {% for p in m.prerequisites %}<li>{{ p }}</li>{% endfor %}
         </ul>
       </div>
     </section>
 
     <section class="danger">
-      <div class="danger-head">⚠ {{ m.securite.niveau }}: {{ m.securite.intitule }}</div>
+      <div class="danger-head">⚠ {{ m.security.level }}: {{ m.security.label }}</div>
       <ul>
-        {% for c in m.securite.consignes %}<li>{{ c }}</li>{% endfor %}
+        {% for c in m.security.instructions %}<li>{{ c }}</li>{% endfor %}
       </ul>
-      <p class="danger-foot">{{ m.securite.consequence }}</p>
+      <p class="danger-foot">{{ m.security.consequence }}</p>
     </section>
 
     <section class="card">
@@ -74,12 +74,12 @@
       <h2 class="section-title">Guided steps</h2>
       {% for phase in m.phases %}
       <div class="phase">
-        <div class="phase-head"><span class="num">{{ loop.index }}</span>{{ phase.titre }}</div>
+        <div class="phase-head"><span class="num">{{ loop.index }}</span>{{ phase.title }}</div>
         <ol class="steps">
-          {% for e in phase.etapes %}
+          {% for e in phase.steps %}
           <li>
             <span class="step-action">{{ e.action }}</span>
-            {% if e.point_cle %}<span class="keynote">★ {{ e.point_cle }}</span>{% endif %}
+            {% if e.key_point %}<span class="keynote">★ {{ e.key_point }}</span>{% endif %}
           </li>
           {% endfor %}
         </ol>
@@ -89,9 +89,9 @@
 
     <section class="card quiz">
       <h2>Check your knowledge</h2>
-      <p class="quiz-sub">{{ m.qcm|length }} questions · answer, then check.</p>
+      <p class="quiz-sub">{{ m.quiz|length }} questions · answer, then check.</p>
       <form id="quiz">
-        {% for q in m.qcm %}
+        {% for q in m.quiz %}
         {% set qi = loop.index0 %}
         <fieldset data-correct="{{ q.correct }}">
           <legend>{{ qi + 1 }}. {{ q.question }}</legend>
@@ -101,7 +101,7 @@
             <span>{{ opt }}</span>
           </label>
           {% endfor %}
-          <p class="explain" hidden>{{ q.explication }}</p>
+          <p class="explain" hidden>{{ q.explanation }}</p>
         </fieldset>
         {% endfor %}
         <div class="actions">

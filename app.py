@@ -22,16 +22,16 @@ app = Flask(__name__)
 MODULE = load_module(BASE / "module.json")
 
 
-def logigramme(module) -> str:
+def flowchart(module) -> str:
     """Mermaid definition of the phase flow (deterministic, never hallucinated)."""
-    noeuds = ["    secu([Preliminary safety])"]
-    liens = []
-    precedent = "secu"
+    nodes = ["    secu([Preliminary safety])"]
+    links = []
+    previous = "secu"
     for phase in module.phases:
-        noeuds.append(f'    {phase.id}["{phase.titre}"]')
-        liens.append(f"    {precedent} --> {phase.id}")
-        precedent = phase.id
-    return "flowchart TD\n" + "\n".join(noeuds) + "\n" + "\n".join(liens)
+        nodes.append(f'    {phase.id}["{phase.title}"]')
+        links.append(f"    {previous} --> {phase.id}")
+        previous = phase.id
+    return "flowchart TD\n" + "\n".join(nodes) + "\n" + "\n".join(links)
 
 
 @app.route("/")
@@ -39,18 +39,18 @@ def index():
     return render_template(
         "module.html",
         m=MODULE,
-        mermaid=logigramme(MODULE),
-        nb_etapes=sum(len(p.etapes) for p in MODULE.phases),
+        mermaid=flowchart(MODULE),
+        num_steps=sum(len(p.steps) for p in MODULE.phases),
     )
 
 
 @app.route("/source")
 def source():
     """Serves the original source PDF manual (for consulting the source)."""
-    fichier = MODULE.meta.fichier_source
-    if not fichier:
+    file = MODULE.meta.source_file
+    if not file:
         abort(404)
-    return send_from_directory(BASE / "data", fichier)
+    return send_from_directory(BASE / "data", file)
 
 
 if __name__ == "__main__":

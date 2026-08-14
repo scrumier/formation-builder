@@ -22,7 +22,7 @@ from pathlib import Path
 
 from .schema import Module
 
-PROMPT_SYSTEME = """\
+SYSTEM_PROMPT = """\
 You are an instructional designer for technical training in an industrial
 electrical environment. From a raw technical procedure, you produce a
 structured training module, faithful to the source, without inventing
@@ -65,9 +65,9 @@ def call_llm(system: str, user: str) -> str:  # pragma: no cover - integration p
 
 def build_module(pdf_path: str | Path) -> Module:
     """Full pipeline PDF -> validated Module (live mode)."""
-    texte = pdf_to_text(pdf_path)
-    brut = call_llm(PROMPT_SYSTEME, texte)
-    return Module.model_validate_json(brut)
+    text = pdf_to_text(pdf_path)
+    raw = call_llm(SYSTEM_PROMPT, text)
+    return Module.model_validate_json(raw)
 
 
 def load_module(json_path: str | Path) -> Module:

@@ -1,29 +1,29 @@
 {
   "meta": {
-    "titre": "Installing a PowerPact B Circuit Breaker in an Enclosure (Types 1 and 3R)",
+    "title": "Installing a PowerPact B Circuit Breaker in an Enclosure (Types 1 and 3R)",
     "source": "Schneider Electric manual PHA79813, Rev. 01 (03/2019)",
     "reference_produit": "PowerPact B, enclosures B125S, B125F, CB125NS, B125RB, CB125NRB",
     "public": "Qualified electricians / authorized operators",
-    "duree_estimee": "≈ 20 min (estimated)",
-    "genere_le": "2026-06-15",
-    "fichier_source": "procedure-schneider.pdf"
+    "estimated_duration": "≈ 20 min (estimated)",
+    "generated_at": "2026-06-15",
+    "source_file": "procedure-schneider.pdf"
   },
-  "objectifs": [
+  "objectives": [
     "Apply electrical safety instructions before and during the intervention",
     "Install the enclosure then the PowerPact B circuit breaker in the correct order",
     "Wire the neutral and ground connections with the prescribed torque values",
     "Energize the device following the safe sequence"
   ],
-  "prerequis": [
+  "prerequisites": [
     "Up-to-date electrical qualification (qualified personnel only)",
     "Appropriate personal protective equipment (PPE)",
     "Voltage detection device with the appropriate rated value",
     "Circuit breaker manual (EAV91186 or EAV91182) for torque values and wire gauges"
   ],
-  "securite": {
-    "niveau": "DANGER",
-    "intitule": "Risk of electric shock, explosion, or arc flash",
-    "consignes": [
+  "security": {
+    "level": "DANGER",
+    "label": "Risk of electric shock, explosion, or arc flash",
+    "instructions": [
       "Wear appropriate PPE and follow safe electrical work practices (NFPA 70E, NOM-029-STPS, CSA Z462, or local equivalent)",
       "Only qualified personnel should perform installation and maintenance",
       "Turn off all power to the equipment before working on it",
@@ -35,66 +35,66 @@
   "phases": [
     {
       "id": "coffret",
-      "titre": "Enclosure installation",
-      "etapes": [
-        { "action": "Remove the screws from the enclosure cover, then remove the cover.", "point_cle": null },
-        { "action": "Remove the knockouts needed for the cable glands or conduit (see figure 1).", "point_cle": null },
-        { "action": "Mount the enclosure on the wall.", "point_cle": null },
-        { "action": "Install the conduit and the necessary fittings.", "point_cle": null },
-        { "action": "Follow local and national electrical codes for wiring methods.", "point_cle": "Refer to the wiring diagram inside the enclosure for accessories." }
+      "title": "Enclosure installation",
+      "steps": [
+        { "action": "Remove the screws from the enclosure cover, then remove the cover.", "key_point": null },
+        { "action": "Remove the knockouts needed for the cable glands or conduit (see figure 1).", "key_point": null },
+        { "action": "Mount the enclosure on the wall.", "key_point": null },
+        { "action": "Install the conduit and the necessary fittings.", "key_point": null },
+        { "action": "Follow local and national electrical codes for wiring methods.", "key_point": "Refer to the wiring diagram inside the enclosure for accessories." }
       ]
     },
     {
       "id": "disjoncteur",
-      "titre": "Circuit breaker installation",
-      "etapes": [
-        { "action": "Position the circuit breaker with the ON (I) end toward the top of the enclosure.", "point_cle": "Mandatory orientation: ON (I) at the top." },
-        { "action": "Attach the circuit breaker to the mounting pan with the supplied screws (see figure 2).", "point_cle": "Tighten to the torque specified in the circuit breaker manual (EAV91186 or EAV91182)." },
-        { "action": "Install the conductors in the circuit breaker lugs and tighten the retaining screws.", "point_cle": "Filler plate: 2-pole = leave in place; 3-pole = remove and discard." }
+      "title": "Circuit breaker installation",
+      "steps": [
+        { "action": "Position the circuit breaker with the ON (I) end toward the top of the enclosure.", "key_point": "Mandatory orientation: ON (I) at the top." },
+        { "action": "Attach the circuit breaker to the mounting pan with the supplied screws (see figure 2).", "key_point": "Tighten to the torque specified in the circuit breaker manual (EAV91186 or EAV91182)." },
+        { "action": "Install the conductors in the circuit breaker lugs and tighten the retaining screws.", "key_point": "Filler plate: 2-pole = leave in place; 3-pole = remove and discard." }
       ]
     },
     {
       "id": "terre",
-      "titre": "Ground lugs",
-      "etapes": [
-        { "action": "If needed, install the PKOGTA2 ground lug kit following the instructions supplied with the kit.", "point_cle": null }
+      "title": "Ground lugs",
+      "steps": [
+        { "action": "If needed, install the PKOGTA2 ground lug kit following the instructions supplied with the kit.", "key_point": null }
       ]
     },
     {
       "id": "neutre",
-      "titre": "Neutral assembly",
-      "etapes": [
-        { "action": "If needed, install the SN100FA (15–100 A) or SN225KA (110–125 A) neutral assembly.", "point_cle": "Tighten the mounting screws to 5.6–10.2 N·m (50–90 lb-in)." },
-        { "action": "Install the neutral conductors in the lugs and tighten per the assembly instructions.", "point_cle": "CB125NS and CB125NRB enclosures: SN225KA neutral already installed and factory-grounded." }
+      "title": "Neutral assembly",
+      "steps": [
+        { "action": "If needed, install the SN100FA (15–100 A) or SN225KA (110–125 A) neutral assembly.", "key_point": "Tighten the mounting screws to 5.6–10.2 N·m (50–90 lb-in)." },
+        { "action": "Install the neutral conductors in the lugs and tighten per the assembly instructions.", "key_point": "CB125NS and CB125NRB enclosures: SN225KA neutral already installed and factory-grounded." }
       ]
     },
     {
       "id": "masse",
-      "titre": "Grounding screw",
-      "etapes": [
-        { "action": "Service entrance application: install the supplied green screw in the neutral bonding hole (figure 2).", "point_cle": "Tighten to 5.6–10.2 N·m (50–90 lb-in). CB125NS/CB125NRB: screw installed at the factory." },
-        { "action": "Non-service-entrance application: remove the green screw from CB125NS/CB125NRB enclosures; for others, do not install it.", "point_cle": null }
+      "title": "Grounding screw",
+      "steps": [
+        { "action": "Service entrance application: install the supplied green screw in the neutral bonding hole (figure 2).", "key_point": "Tighten to 5.6–10.2 N·m (50–90 lb-in). CB125NS/CB125NRB: screw installed at the factory." },
+        { "action": "Non-service-entrance application: remove the green screw from CB125NS/CB125NRB enclosures; for others, do not install it.", "key_point": null }
       ]
     },
     {
       "id": "couvercle",
-      "titre": "Cover installation",
-      "etapes": [
-        { "action": "If a 3-pole circuit breaker is installed, remove the filler plate (figure 3).", "point_cle": null },
-        { "action": "Place the cover on the circuit breaker enclosure.", "point_cle": null },
-        { "action": "Install the screws to secure the cover (figure 4).", "point_cle": "Tighten to 3.4–5.6 N·m (30–50 lb-in)." }
+      "title": "Cover installation",
+      "steps": [
+        { "action": "If a 3-pole circuit breaker is installed, remove the filler plate (figure 3).", "key_point": null },
+        { "action": "Place the cover on the circuit breaker enclosure.", "key_point": null },
+        { "action": "Install the screws to secure the cover (figure 4).", "key_point": "Tighten to 3.4–5.6 N·m (30–50 lb-in)." }
       ]
     },
     {
       "id": "tension",
-      "titre": "Energizing",
-      "etapes": [
-        { "action": "With the cover installed and the handle in the OFF (O) position, energize in sequence: start at the source end and continue toward the enclosure device.", "point_cle": "Always start on the source side, handle in the OFF (O) position." },
-        { "action": "Move the enclosure handle to the ON (I) position.", "point_cle": null }
+      "title": "Energizing",
+      "steps": [
+        { "action": "With the cover installed and the handle in the OFF (O) position, energize in sequence: start at the source end and continue toward the enclosure device.", "key_point": "Always start on the source side, handle in the OFF (O) position." },
+        { "action": "Move the enclosure handle to the ON (I) position.", "key_point": null }
       ]
     }
   ],
-  "qcm": [
+  "quiz": [
     {
       "question": "Before any work on the circuit breaker, what is the first safety action?",
       "options": [
@@ -103,7 +103,7 @@
         "Warn a coworker about the work area"
       ],
       "correct": 1,
-      "explication": "All power is turned off, then the absence of voltage is verified with an appropriately rated detector before working."
+      "explanation": "All power is turned off, then the absence of voltage is verified with an appropriately rated detector before working."
     },
     {
       "question": "In which orientation should the circuit breaker be positioned in the enclosure?",
@@ -113,7 +113,7 @@
         "Orientation does not matter"
       ],
       "correct": 0,
-      "explication": "The circuit breaker is positioned with the ON (I) end toward the top of the enclosure."
+      "explanation": "The circuit breaker is positioned with the ON (I) end toward the top of the enclosure."
     },
     {
       "question": "For a 3-pole circuit breaker, what should be done with the filler plate?",
@@ -123,7 +123,7 @@
         "Move it to the neutral"
       ],
       "correct": 1,
-      "explication": "2-pole: the plate stays installed. 3-pole: it is removed and discarded."
+      "explanation": "2-pole: the plate stays installed. 3-pole: it is removed and discarded."
     },
     {
       "question": "What is the tightening torque for the cover screws?",
@@ -133,7 +133,7 @@
         "10–15 N·m (90–130 lb-in)"
       ],
       "correct": 1,
-      "explication": "The cover screws are tightened to 3.4–5.6 N·m (30–50 lb-in). Do not confuse with the neutral (5.6–10.2 N·m)."
+      "explanation": "The cover screws are tightened to 3.4–5.6 N·m (30–50 lb-in). Do not confuse with the neutral (5.6–10.2 N·m)."
     },
     {
       "question": "When should the green grounding screw be installed?",
@@ -143,7 +143,7 @@
         "Never, it is purely decorative"
       ],
       "correct": 1,
-      "explication": "The green grounding screw applies to service entrance applications. Outside of service entrance, it is not installed."
+      "explanation": "The green grounding screw applies to service entrance applications. Outside of service entrance, it is not installed."
     },
     {
       "question": "When energizing, what is the correct order?",
@@ -153,13 +153,13 @@
         "Energize the enclosure first, source last"
       ],
       "correct": 1,
-      "explication": "With the cover installed and the handle in the OFF (O) position, energize in sequence from the source toward the device, then move the handle to ON (I)."
+      "explanation": "With the cover installed and the handle in the OFF (O) position, energize in sequence from the source toward the device, then move the handle to ON (I)."
     }
   ],
-  "notes_revision": [
+  "review_notes": [
     {
-      "sujet": "Filler plate: case of the 3-pole circuit breaker",
-      "constat": "Inconsistency in the source manual. The French caption for Figure 3 states the filler plate should be \"installed\" for a 3-pole circuit breaker, while the English version of the same figure (\"remove and discard the filler plate\") and the French \"cover installation\" step both say to remove it.",
+      "subject": "Filler plate: case of the 3-pole circuit breaker",
+      "finding": "Inconsistency in the source manual. The French caption for Figure 3 states the filler plate should be \"installed\" for a 3-pole circuit breaker, while the English version of the same figure (\"remove and discard the filler plate\") and the French \"cover installation\" step both say to remove it.",
       "decision": "Version used in this module: for a 3-pole circuit breaker, remove and discard the filler plate (consistent with the English version and with the cover installation step). To be confirmed by a technical reviewer before publication."
     }
   ]
